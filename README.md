@@ -5,17 +5,27 @@ While preparing for interviews for top companies, the main thing comes is to pre
 I will be uploading my work on regular basis starting from recursion, backtracking and till graphs , DP and at last Bit Masking.
 
 The detailed topics are as follows:
->> Recursion
->> BackTracking
->> Array
->> LinkedList
->> Stack & Queue
->> Tree
->> Heap, Hashtable, Tries
->> Java Collection Frameworks
->> Graphs
->> Dynamic Programming (DP)
->> Bit Masking
+> Recursion
+
+> BackTracking
+
+> Array
+
+> LinkedList
+
+> Stack & Queue
+
+> Tree
+
+> Heap, Hashtable, Tries
+
+> Java Collection Frameworks
+
+> Graphs
+
+> Dynamic Programming (DP)
+
+> Bit Masking
 
 Till then stay connected.
 Happy Coding :D
