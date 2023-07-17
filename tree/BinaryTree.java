@@ -27,6 +27,26 @@ class BinaryTreeOperations{
          return node;
     }
 
+    int height (BinaryTreeNode<Integer> root){
+        if(root == null){
+            return 0;
+        }
+        int leftHeight = height(root.left);
+        int rightHeight = height(root.right);
+        int value = Math.max(leftHeight,rightHeight);
+        return value + 1;
+
+    }
+
+    int size(BinaryTreeNode<Integer> root){
+        if(root == null) return 0;
+        int counter = 1;
+        counter += size(root.left);
+        counter += size(root.right);
+
+        return counter;
+    }
+
     void print(BinaryTreeNode<Integer> root){
         if(root == null) return;
         String result = "";
@@ -80,6 +100,8 @@ public class BinaryTree {
             System.out.println("Binary Tree Operations");
             System.out.println("1> Insert");
             System.out.println("2> Print");
+            System.out.println("3> Height");
+            System.out.println("4> Size");
             System.out.print("Enter Choice :");
             int n = sc.nextInt();
             switch (n) {
@@ -89,6 +111,14 @@ public class BinaryTree {
 
                 case 2:
                     opr.print(root);
+                    break;
+
+                case 3:
+                    System.out.println(opr.height(root));
+                    break;
+
+                case 4:
+                    System.out.println(opr.size(root));
                     break;
             
                 default:
