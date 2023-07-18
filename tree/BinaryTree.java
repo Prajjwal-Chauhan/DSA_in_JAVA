@@ -1,4 +1,7 @@
+import java.util.ArrayList;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.TreeMap;
 
 class BinaryTreeNode<T>{
     T data;
@@ -38,6 +41,27 @@ class BinaryTreeOperations{
 
     }
 
+    public void verticalOrder(BinaryTreeNode<Integer> root, int distance, TreeMap<Integer,ArrayList<Integer>> map){
+        if(root == null) return;
+        if(!map.containsKey(distance)){
+            ArrayList<Integer> arr = new ArrayList<>();
+            arr.add(root.data);
+            map.put(distance,arr);
+        }
+        else {
+            map.get(distance).add(root.data);
+        }
+        verticalOrder(root.left,distance - 1, map);
+        verticalOrder(root.right,distance + 1, map);
+    }
+    public void printVerticalOrder(BinaryTreeNode<Integer> root){
+        TreeMap<Integer,ArrayList<Integer>> map = new TreeMap<>();
+        verticalOrder(root, 0, map);
+        for(Map.Entry<Integer,ArrayList<Integer>> m : map.entrySet()){
+            System.out.println(m.getValue());
+        }
+    }
+
     int size(BinaryTreeNode<Integer> root){
         if(root == null) return 0;
         int counter = 1;
@@ -45,6 +69,32 @@ class BinaryTreeOperations{
         counter += size(root.right);
 
         return counter;
+    }
+
+    int maxLevelL = 0;
+    void leftView(BinaryTreeNode<Integer> root,int currLevel){
+        if(root == null) return;
+
+        if(maxLevelL < currLevel){
+            System.out.println(root.data);
+            maxLevelL = currLevel;
+        }
+
+        leftView(root.left, currLevel + 1);
+        leftView(root.right, currLevel + 1);
+    }
+
+    int maxLevelR = 0;
+    void rightView(BinaryTreeNode<Integer> root,int currLevel){
+        if(root == null) return;
+
+        if(maxLevelR < currLevel){
+            System.out.println(root.data);
+            maxLevelR = currLevel;
+        }
+
+        rightView(root.right, currLevel + 1);
+        rightView(root.left, currLevel + 1);
     }
 
     void print(BinaryTreeNode<Integer> root){
@@ -102,6 +152,9 @@ public class BinaryTree {
             System.out.println("2> Print");
             System.out.println("3> Height");
             System.out.println("4> Size");
+            System.out.println("5> Left View");
+            System.out.println("6> Right View");
+            System.out.println("7> Vertical order traversal");
             System.out.print("Enter Choice :");
             int n = sc.nextInt();
             switch (n) {
@@ -119,6 +172,18 @@ public class BinaryTree {
 
                 case 4:
                     System.out.println(opr.size(root));
+                    break;
+
+                case 5:
+                    opr.leftView(root, n);
+                    break;
+
+                case 6:
+                    opr.rightView(root, n);
+                    break;
+
+                case 7:
+                    opr.printVerticalOrder(root);
                     break;
             
                 default:
